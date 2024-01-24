@@ -16,8 +16,16 @@ config.vm.provision "shell", path: "script.sh"
                 vb.memory = "2048"
                 vb.cpus = 2
         end
-	
-controle.vm.provision "shell", inline: "apt -y install git"	
+
+controle.vm.provision "ansible_local" do |ansible|
+            ansible.playbook = "playbook.yml"
+            ansible.install_mode = "pip"
+        end
+
+
+# controle.vm.provision "shell", inline: "apt -y install git"	
+
+
 	end
   config.vm.define "web" do |controle|
         controle.vm.box = "shekeriev/debian-11"
