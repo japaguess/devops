@@ -19,9 +19,12 @@ config.vm.provision "shell", path: "script.sh"
 
 controle.vm.provision "ansible_local" do |ansible|
             ansible.playbook = "playbook.yml"
+			ansible.install_mode = "pip"
+        end
+controle.vm.provision "ansible_local" do |ansible|
+           	ansible.playbook = "installdocker.yml"
             ansible.install_mode = "pip"
         end
-
 
 # controle.vm.provision "shell", inline: "apt -y install git"	
 
